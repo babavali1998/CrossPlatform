@@ -1,0 +1,17 @@
+# Background worker (BullMQ). Deploy on Railway, Render, Fly.io or any
+# container host next to the Vercel-hosted web app. Uses the same env vars.
+FROM node:22-slim
+
+WORKDIR /app
+ENV NODE_ENV=production
+
+COPY package.json package-lock.json ./
+COPY prisma ./prisma
+COPY prisma.config.ts ./
+RUN npm ci --include=dev
+
+COPY tsconfig.json ./
+COPY src ./src
+
+# Apply pending migrations, then start the worker.
+CMD ["sh", "-c", "npx prisma migrate deploy && npm run worker"]

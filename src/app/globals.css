@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --font-body: "Figtree Variable";
+  --font-display: "Bricolage Grotesque Variable";
+  --paper: #f6f7f9;
+  --surface: #ffffff;
+  --ink: #15171c;
+  --slate: #5c6575;
+  --muted: #8a92a0;
+  --line: #e2e5ea;
+  --line-strong: #cfd4dc;
+  --signal: #3b45d9;
+  --signal-soft: #eceefd;
+  --ok: #1f8a5b;
+  --ok-soft: #e6f4ed;
+  --warn: #a5650f;
+  --warn-soft: #fbf1e1;
+  --bad: #b8400f;
+  --bad-soft: #fbebe3;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #101216;
+    --surface: #171a20;
+    --ink: #eef0f4;
+    --slate: #a7afbd;
+    --muted: #7d8594;
+    --line: #262a33;
+    --line-strong: #353a45;
+    --signal: #7b84ff;
+    --signal-soft: #1f2340;
+    --ok: #4cc28c;
+    --ok-soft: #13291f;
+    --warn: #e0a84e;
+    --warn-soft: #2c2214;
+    --bad: #f08a5d;
+    --bad-soft: #2f1a12;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-slate: var(--slate);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-signal: var(--signal);
+  --color-signal-soft: var(--signal-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
